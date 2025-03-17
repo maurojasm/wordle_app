@@ -6,7 +6,7 @@
 
 #define Green   "\033[32m"      /* Green */
 #define Yellow  "\033[33m"      /* Yellow */
-#define Reset   "\033[0m"
+#define Reset   "\033[0m"       /*Reset Color*/
 
 using std::vector;
 using std::string;
