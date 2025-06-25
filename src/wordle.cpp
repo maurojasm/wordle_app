@@ -2,11 +2,12 @@
 
 Wordle::Wordle() {
     srand(time(0));
-    std::ifstream list("assets/word_list.txt");
+    std::ifstream list("assets/wordle_words.txt");
     string input;
     while (list >> input) {
         this->word_list.push_back(input);
     }
+    list.close();
     this->answer = this->word_list[rand() % this->word_list.size()];
     // this->answer = this->word_list[0]; // debug
 }
@@ -30,7 +31,8 @@ vector<int> Wordle::play(string guess) {
         }
         else {
             size_t pos = sub.find(guess[i]);
-            if (pos != string::npos && result[pos] != Colors::GREEN) {
+            if (pos != string::npos && result[pos] != Colors::GREEN
+                && guess[i] != this->answer[i]) {
                 result[i] = Colors::YELLOW;
                 sub[pos] = '_';
             }
